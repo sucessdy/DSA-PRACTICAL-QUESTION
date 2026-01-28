@@ -1,0 +1,11 @@
+{
+    "files.associations": {
+        "*.embeddedhtml": "html",
+        "*.ejs": "html",
+        "vector": "cpp",
+        "unordered_map": "cpp",
+        "new": "cpp",
+        "stack": "cpp",
+        "iostream": "cpp"
+    }
+}
