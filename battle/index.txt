@@ -1,0 +1,15 @@
+Problem:
+Given an array of integers, return the first element that repeats.
+If no element repeats, return -1.
+
+Example:
+[10, 5, 3, 4, 3, 5, 6] → 3
+(because 3 is the first element whose second occurrence appears earliest)
+
+Constraints (important 👀)
+
+Time complexity target: O(n)
+
+Space complexity: O(n) allowed
+
+Language: your choice (C / C++ / JS — you’re comfy with all 😏)
