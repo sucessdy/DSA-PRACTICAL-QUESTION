@@ -20,29 +20,40 @@ public:
 class List
 {
 
-Node* head;
-Node* tail;
+    Node *head;
+    Node *tail;
 
-    public: 
+public:
     List()
     {
         head = tail = NULL;
     }
 
-    int getSizeOfLinkedList(Node *head)
+    // int getSizeOfLinkedList(Node *head)
+    // {
+
+    //     if (head == NULL)
+    //     {
+    //         return 0;
+    //     }
+    //     return 1 + getSizeOfLinkedList(head->next);
+    // }
+
+    int sizeOfLinkedList( Node *head)
     {
-
-
-        if (head == NULL)
+        int cnt = 0;
+        Node *curr = head;
+        while (curr != nullptr)
         {
-            return 0;
+            cnt++;
+            curr = curr->next;
         }
-        return 1 + getSizeOfLinkedList(head->next);
+        return cnt;
     }
 
     // Node *middle(Node *head)
     // {
-    //     if (head== NULL) { 
+    //     if (head== NULL) {
 
     //     }
     //     Node *curr = head;
@@ -58,63 +69,68 @@ Node* tail;
     //     {
     //         curr = curr->next;
     //     }
+
     // }
-    
-     
-    Node*middleList(Node *head) { 
-      Node*  slow  = head; 
-      Node * fast = head; 
-      while (fast != NULL && fast->next != NULL) { 
-    slow =    slow->next; 
-    fast =     fast->next->next; 
-      }
-      return slow ; 
+
+    Node *middleList(Node *head)
+    {
+        Node *slow = head;
+        Node *fast = head;
+        while (fast != NULL && fast->next != NULL)
+        {
+            slow = slow->next;
+            fast = fast->next->next;
+        }
+        return slow;
     }
 
-     void printList(Node*head) {
-       
-        while (head!= NULL) { 
-            cout << head->data << "->" ; 
-        head = head->next; 
+    void printList(Node *head)
+    {
+
+        while (head != NULL)
+        {
+            cout << head->data << "->";
+            head = head->next;
         }
 
-        cout << "NULL" << endl; 
-
-        
+        cout << "NULL" << endl;
     }
-bool DetectACyle(Node *head)  {
-    Node *slow =  head; 
-    Node *fast =  head; 
-    while (fast!= NULL && fast->next != NULL) { 
-        slow = slow->next; 
-        fast = fast->next->next; 
-if (slow == fast) {
-        return true; 
-    }
+    bool DetectACyle(Node *head)
+    {
+        Node *slow = head;
+        Node *fast = head;
+        while (fast != NULL && fast->next != NULL)
+        {
+            slow = slow->next;
+            fast = fast->next->next;
+            if (slow == fast)
+            {
+                return true;
+            }
+        }
 
+        return false;
     }
-    
-    return false ; 
-    }
-
-   
-
 };
 int main()
 {
-    List ll; 
-
+    List ll;
 
     Node *head = new Node(1);
     head->next = new Node(3);
     head->next->next = new Node(1);
     head->next->next->next = new Node(2);
     head->next->next->next->next = new Node(1);
-    cout << "Detect: " << " "; 
-    ll.DetectACyle(head) ; 
-    ll.printList(head) ; 
+    cout << "Detect: " << " ";
+    ll.DetectACyle(head);
+    ll.printList(head);
 
+ Node *res =   ll.middleList(head) ;
+ ll.printList(res) ;  
+    // ll.getSizeOfLinkedList(head) ;
 
-    // cout << "Count of nodes is " << getSizeOfLinkedList(head);
+    // cout << "Count of nodes is " << ll.getSizeOfLinkedList(head);
+
+cout << "cnt : " << ll.sizeOfLinkedList(head) ; 
     return 0;
 }
