@@ -98,11 +98,16 @@ public:
 
 
 int main () {
-    string s = "aabb" ; 
-rearrangeAdjecntDuplicates(s) ; 
-for (auto i : s){
-    cout << i << "" ; 
-}cout << endl; 
+    string s1 = "ab" ; 
+
+    string s2 = "eidboaoo" ; 
+bool res = checkInclusion(s1, s2); 
+
+
+cout <<( res ? "true" : "false") << endl;  
+
+
+
     return 0; 
 }
 

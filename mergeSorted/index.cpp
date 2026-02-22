@@ -55,12 +55,12 @@ public:
 
     Node *mergeTwo(Node *l1, Node *l2)
     {
-        Node dummy(-1) ; 
+        Node dummy(-1);
         Node *curr = &dummy;
         while (l1 != nullptr && l2 != nullptr)
         {
 
-            if ( l1->data < l2->data) 
+            if (l1->data < l2->data)
             {
                 curr->next = l1;
                 l1 = l1->next;
@@ -71,55 +71,50 @@ public:
                 l2 = l2->next;
                 ;
             }
-            curr= curr->next;
+            curr = curr->next;
         }
 
         curr->next = l1 ? l1 : l2;
         return dummy.next;
-
     }
 
+    Node *merge(int i, int j, vector<Node *> &head)
+    {
 
-    Node * merge(int i , int j , vector<Node*> &head) { 
+        if (i == j)
+            return head[i];
+        int mid = i + (j - i) / 2;
+        Node *head1 = merge(i, mid, head);
+        Node *head2 = merge(mid + 1, j, head);
+        cout << "Merging range: " << i << " to " << j << endl;
+        Node *h = mergeTwo(head1, head2);
 
-        if (i == j) return head[i];
-        int mid = i + (j - i)/2 ; 
-        Node * head1 = merge(i , mid , head); 
-        Node * head2 = merge(mid + 1 , j , head) ;
-       cout << "Merging range: " << i << " to " << j << endl;
-        Node * h = mergeTwo(head1, head2) ; 
-         
-        return h ;
-
-
+        return h;
     }
 
     Node *mergeKLists(vector<Node *> &head)
     {
-       if (head.size() == 0) return nullptr;  
+        if (head.size() == 0)
+            return nullptr;
 
-
-        
-        return merge(0, head.size() -1 , head ) ; 
-
-
+        return merge(0, head.size() - 1, head);
     }
 
-    void printList (Node * head){ 
-        while (head != NULL){ 
-            cout << head->data << "->" ;
+    void printList(Node *head)
+    {
+        while (head != NULL)
+        {
+            cout << head->data << "->";
             head = head->next;
         }
-        cout << "NULL" << endl; 
+        cout << "NULL" << endl;
     }
-
-
 };
 int main()
 {
     SinglyLinkedList sl;
 
-    vector<Node*> arr(3);
+    vector<Node *> arr(3);
 
     // List 1: 1 -> 4 -> 5
     arr[0] = new Node(1);
@@ -135,8 +130,7 @@ int main()
     arr[2] = new Node(2);
     arr[2]->next = new Node(6);
 
-    Node* head = sl.mergeKLists(arr);
-
+    Node *head = sl.mergeKLists(arr);
 
     sl.printList(head);
     return 0;
