@@ -3,16 +3,16 @@
 
 using namespace std;
 
-// bool matrixGrid(int matrix[][3], int row , int col, int k){
-// for ( int i = 0 ; i < row ; i++){
-//     for ( int j = 0; j < col ; j ++) {
-// if ( matrix[i][j] == k){
-//     return true;
-// }
-//     }
-// }
-// return false;
-// }
+bool matrixGrid(int matrix[][3], int row , int col, int k){
+for ( int i = 0 ; i < row ; i++){
+    for ( int j = 0; j < col ; j ++) {
+if ( matrix[i][j] == k){
+    return true;
+}
+    }
+}
+return false;
+}
 
 pair<int, int> Matrix(const vector<vector<int>>& matrix, int key)
 {
@@ -201,12 +201,17 @@ int n = matrix[0].size();
 }
         // pair<int, int> ans = Matrix(matrix, key) ;
 int main () {
-    // int matrix[3][3] = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
-    vector<vector<int>> matrix = {{1,3,5,7} ,{ 10,11,16,20} ,{23,30,34,60}};
+    int matrix[3][3] = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
+    
+    // vector<vector<int>> matrix = {{1,3,5,7} ,{ 10,11,16,20} ,{23,30,34,60}};
     int n = 3;
     int row = 3;
     int col = 3;
-    int key = 21;
+    int key = 9;
+
+    bool res = matrixGrid(matrix, row, col, key)  ; 
+
+    cout <<( res ? "true": "false" )<< endl; 
     // cout << diagonalSumOptimal(matrix, n) << endl;
     // cout << DiagonalSum(matrix, n) << endl;
 
@@ -217,16 +222,16 @@ int main () {
 // cout << Matrix(matrix, row, col, key) << endl;  
         // pair<int, int> ans = Matrix(matrix, row, col, key) ;
 
-         pair<int, int> ans = Matrix(matrix, key) ;
-        if(ans.first == -1){
-    cout << "not found\n";
-        }
-        else {
-             cout <<  "index: " << ans.first << " " << ans.second << endl ;
-             cout << "value : " << matrix[ans.first][ans.second] << endl;
-        }
+    //      pair<int, int> ans = Matrix(matrix, key) ;
+    //     if(ans.first == -1){
+    // cout << "not found\n";
+    //     }
+    //     else {
+    //          cout <<  "index: " << ans.first << " " << ans.second << endl ;
+    //          cout << "value : " << matrix[ans.first][ans.second] << endl;
+    //     }
 
-    // cout << matrixGrid(matrix, row, col, k) << endl;
+
 
     // for (int i = 0; i < row; i++)
     // {
